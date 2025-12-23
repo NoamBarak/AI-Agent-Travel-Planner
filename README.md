@@ -1,118 +1,56 @@
-# Paris Trip Planning Agent
+# 🤖 AI-Powered Travel Planning Agents
 
-A basic Python agent using the Claude Agent SDK to demonstrate stateless trip planning queries.
+> **Next-generation intelligent travel assistants powered by Claude AI** | Multi-turn conversational AI | Context-aware recommendations
 
-## Overview
+## 🚀 Overview
 
-This agent uses the `query()` approach for one-off, stateless interactions. Each query is independent with no memory of previous conversations - perfect for simple question-and-answer scenarios.
+Harness the power of **large language models (LLMs)** to revolutionize travel planning with intelligent, context-aware AI agents built on Anthropic's cutting-edge **Claude Sonnet 4.5** foundation model. This repository showcases both **stateless query processing** and **stateful conversational AI** patterns using the official Claude Agent SDK.
 
-## Features
+### ✨ Key Features
 
-- **Stateless interactions**: Each query is independent
-- **Travel-focused examples**: 5 different Paris trip planning scenarios
-- **Simple setup**: Uses basic query() approach without tools or memory
-- **Clean output**: Formatted responses for easy reading
+- 🧠 **Advanced Context Memory** - Multi-turn conversations with persistent state management
+- ⚡ **Real-time Streaming** - Lightning-fast responses with streaming API integration
+- 🎯 **Prompt Engineering** - Production-grade system prompts for domain expertise
+- 🔄 **Stateless & Stateful Modes** - Flexible architecture for different use cases
+- 🌍 **Intelligent Recommendations** - Personalized itineraries powered by Claude AI
+- 💬 **Natural Language Understanding** - Human-like conversational interactions
+- 🛠️ **SDK** - Built with Anthropic's official Python SDK
 
-## Prerequisites
+## 🏗️ Architecture
 
-1. **Python 3.8+**
-2. **Claude Agent SDK**:
-   ```bash
-   pip install claude-agent-sdk
-   ```
+### Conversational AI Agent (`conversational_trip_planner.py`)
+**Enterprise-grade stateful agent** with conversation memory and context awareness. Ideal for complex, multi-turn dialogues requiring persistent state.
 
-3. **Claude Code CLI**:
-   ```bash
-   npm install -g @anthropic-ai/claude-code
-   ```
+**Technologies:**
+- Multi-message conversation history tracking
+- Async/await pattern for concurrent operations
+- Dynamic prompt injection
+- Context window optimization
 
-4. **Anthropic API Key**: Set up your API credentials for Claude Code CLI
+### Stateless Query Engine (`stateless_travel_queries.py`)
+**High-performance stateless processor** for independent, one-shot queries. Perfect for microservices architectures and serverless deployments.
 
-## Installation
 
+## 🚦 Quick Start
+
+### Prerequisites
 ```bash
-# Clone or download this project
-cd ai_agent
-
-# Install dependencies
-pip install -r requirements.txt
+pip install claude-agent-sdk python-dotenv
 ```
 
-## Usage
-
+### Configuration
 ```bash
-python trip_planner.py
+# Create .env file
+echo "ANTHROPIC_API_KEY=your-api-key-here" > .env
 ```
 
-## How It Works
+### Run Examples
+```bash
+# Stateless queries (independent interactions)
+python stateless_travel_queries.py
 
-The agent demonstrates 5 different trip planning queries:
-
-1. **General Planning**: Must-see attractions for a 5-day Paris trip
-2. **Museums**: Best museums for art lovers
-3. **Transportation**: Getting from CDG Airport to central Paris
-4. **Dining**: Authentic French restaurant recommendations
-5. **Itinerary**: Planning a perfect day starting at the Eiffel Tower
-
-### Key Code Structure
-
-```python
-from claude_agent_sdk import query, ClaudeAgentOptions
-
-# Configure the agent
-options = ClaudeAgentOptions(
-    system_prompt="You are a helpful travel planning assistant...",
-    allowed_tools=[]  # No tools needed for basic queries
-)
-
-# Make a stateless query
-async for message in query(prompt="Plan my Paris trip", options=options):
-    # Process the response
-    ...
+# Conversational agent (multi-turn with memory)
+python conversational_trip_planner.py
 ```
 
-## Stateless vs Stateful
 
-### This Example (Stateless - `query()`)
-- ✅ Simple one-off questions
-- ✅ Independent interactions
-- ✅ No context needed between queries
-- ❌ Cannot have follow-up conversations
-- ❌ No memory of previous exchanges
-
-### Future Enhancement (Stateful - `ClaudeSDKClient`)
-When you need memory and conversation context:
-- ✅ Multi-turn conversations
-- ✅ Follow-up questions
-- ✅ Context awareness
-- ✅ Interactive chat sessions
-
-## Next Steps
-
-To add memory and tools in future iterations, you would:
-1. Switch from `query()` to `ClaudeSDKClient`
-2. Add MCP tools for data access
-3. Enable conversation history
-4. Implement custom tools for booking, weather, etc.
-
-## Example Output
-
-```
-==============================================================
-Query: I'm planning a 5-day trip to Paris. What are the must-see attractions?
-==============================================================
-
-For a 5-day trip to Paris, here are the essential attractions:
-
-1. Eiffel Tower - Visit at sunset for breathtaking views
-2. Louvre Museum - Home to the Mona Lisa and thousands of masterpieces
-3. Notre-Dame Cathedral - Marvel at Gothic architecture
-4. Champs-Élysées and Arc de Triomphe - Iconic Parisian boulevard
-5. Sacré-Cœur and Montmartre - Artistic hilltop neighborhood
-...
-```
-
-## Learn More
-
-- [Claude Agent SDK Python Docs](https://platform.claude.com/docs/en/api/agent-sdk/python)
-- [Claude Code Documentation](https://code.claude.com/docs)
